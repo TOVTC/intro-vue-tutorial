@@ -12,7 +12,6 @@
     <div id="app">
       <div class="nav-bar"></div>
 
-      <!-- v-on directive links here -->
       <div class="cart">Cart({{ cart }})</div>
       
       <div class="product-display">
@@ -28,20 +27,12 @@
               <li v-for="detail in details">{{ detail }}</li>
             </ul>
 
-            <!-- mouseover is the Vue equivalent of hover -->
-            <!-- this array of objects contains an id, a colour, and an image path -->
-            <div v-for="variant in variants" :key="variant.id" @mouseover="updateImage(variant.image)">{{ variant.color }}</div>
-
-            <!-- v-on directive "v-on:" adds an event listener to an element -->
-            <!-- specify the event to listen for and the logic being triggered  -->
-            <!-- the "cart" in the expression refers to the "cart" variable in the cart div above -->
-            <button class="button" v-on:click="cart += 1">Add to Cart</button>
-
-            <!-- simple logic can be in-line but methods can be imported in the expression -->
-            <!-- the @ symbol is the shorthand for "v-on:" -->
-            <button class="button" @click="addToCart">Add to Cart (method)</button>
-
-            <button class="button" @click="removeFromCart">Remove from Cart</button>
+            <div 
+              v-for="variant in variants" 
+              :key="variant.id" 
+              @mouseover="updateImage(variant.image)" 
+            >{{ variant.color }}</div>
+            <button class="button" @click="addToCart">Add to Cart</button>
           </div>
         </div>
       </div>
