@@ -6,27 +6,30 @@
     <!-- Import Styles -->
     <link rel="stylesheet" href="./assets/styles.css" />
     <!-- Import Vue.js -->
-    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="https://unpkg.com/vue@3.0.11/dist/vue.global.js"></script>
   </head>
   <body>
     <div id="app">
-      <!-- product variable refers to product property in data option of app-->
-      <!-- curly brace or "moustache" syntax allows JavaScript Expressions (runs valid JS in HTML) -->
-      <!-- can allow ternary, concatenation, methods, etc, not just plugging in variables -->
-      <h1>{{ product }}</h1>
-      <!-- Vue is reactive (has reactivity system), so when variables change in app.data(), the DOM updates to reflect changes -->
-      <!-- can test this using DevTools, updating mountedApp.product -->
-      <p>{{ description }}</p>
+      <div class="nav-bar"></div>
+      
+      <div class="product-display">
+        <div class="product-container">
+          <div class="product-image">
+            <!-- image goes here -->
+          </div>
+          <div class="product-info">
+            <h1>{{ product }}</h1>
+          </div>
+        </div>
+      </div>
     </div>
 
     <!-- Import App -->
     <script src="./main.js"></script>
+
     <!-- Mount App -->
     <script>
-      // app refers to the app instance in our main.js file
-      // mounts the app to our DOM after it is imported
-      // argument in .mount() is a DOM selector used to plug the app into a piece of the DOM (in this case, line 12)
-      const mountedApp = app.mount("#app")
+      const mountedApp = app.mount('#app')
     </script>
   </body>
 </html>
