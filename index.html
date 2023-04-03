@@ -15,15 +15,10 @@
       <div class="product-display">
         <div class="product-container">
           <div class="product-image">
-            <!-- directly imports path from data option in app -->
-            <!-- use the v-bind directive "v-bind:" to dynamically bind an attribute ("src") to an expression ("image") -->
-            <!-- using just a colon to bind is the shorthand for "v-bind:" -->
-            <img :src="image">
-            <!-- use v-binds for all kinds of attributes, like alt text, href urls, classes, styles, etc. -->
+            <img v-bind:src="image">
           </div>
           <div class="product-info">
             <h1>{{ product }}</h1>
-            <a :href="url">Vue Intro</a>
           </div>
         </div>
       </div>
