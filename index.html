@@ -17,10 +17,7 @@
       <div class="product-display">
         <div class="product-container">
           <div class="product-image">
-            <img
-              v-bind:src="image"
-              :class="{'out-of-stock-img': !inStock}"
-            >
+            <img v-bind:src="image">
           </div>
           <div class="product-info">
             <h1>{{ product }}</h1>
@@ -30,49 +27,13 @@
               <li v-for="detail in details">{{ detail }}</li>
             </ul>
 
-            <!-- the color-circle class uses CSS to style our div into a circle -->
-            <!-- then use the colour name and v-bind to set the background colour of the div -->
-            <!-- we added a style attribute to our div and bound a style object to it with a CSS property and the colour of that v-for iteration -->
-            <!-- backgroundColor property name is in camelCasing because the expression is in JS -->
-            <!-- 'background-color' could be in kebab-casing, but it would need to be enclosed in quotes -->
             <div 
+              class="color-circle" 
               v-for="variant in variants" 
               :key="variant.id" 
               @mouseover="updateImage(variant.image)" 
-              class="color-circle"
-              :style="{backgroundColor: variant.color}"
-            ></div>
-
-            <!-- in-line styling can get messy, so you can bind to an entire style object defined in the app data -->
-            <div 
-              class="color-circle"
-              :style="styles"
-            >Object Styles Example</div>
-
-            <!-- you can add multiple classes using class binding -->
-            <!-- here, the class name is "active" and activeClass is the condition being evaluated -->
-            <!-- activeClass evaluates to true in our JS file, so class="color-circle active" -->
-            <div 
-              class="color-circle"
-              :class="{active: activeClass}"
-            >Multiple Classes Example</div>
-
-            <!-- class binding also allows you to use inline ternary operators -->
-            <!-- use array syntax to add activeClass whenever isActive is true, which it is -->
-            <div 
-              class="color-circle"
-              :class="[isActive ? activeClass : '']"
-            >Ternary Styles Example</div>
-
-            <!-- bind the disabled property to the Add to Cart button that activates when inStock is false to prevent the addToCart method from running -->
-            <!-- the disabledButton class makes the button look disabled via CSS and also conditionally applies when inStock is false -->
-            <!-- can use devTools to run mountedApp.inStock = true to switch between both states -->
-            <button 
-              class="button" 
-              :disabled="!inStock"
-              :class="{disabledButton: !inStock}"
-              @click="addToCart"
-            >Add to Cart</button>
+              :style="{ backgroundColor: variant.color }"></div>
+            <button class="button" :class="{ disabledButton: !inStock }" :disabled="!inStock" v-on:click="addToCart">Add to Cart</button>
           </div>
         </div>
       </div>
