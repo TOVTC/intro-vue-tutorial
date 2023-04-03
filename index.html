@@ -19,22 +19,8 @@
           </div>
           <div class="product-info">
             <h1>{{ product }}</h1>
-            <!-- v-if directive references the inStock property in the data object of the app -->
-            <!-- a v-if statement does not need to be paired with a v-else statement -->
-            <p v-if="inStock">In Stock (if/else)</p>
-            <p v-else>Out of Stock (if/else)</p>
-
-            <!-- v-show directive is used for toggling elements' visibility, as opposed to adding or removing an element from the DOM -->
-            <!-- if inStock is false, v-show will apply an inline style attribute to set it to "display: none;" -->
-            <p v-show="inStock">In Stock (show)</p>
-
-            <!-- conditionals -->
-            <p v-if="inventory > 10">In Stock (conditional)</p>
-            <p v-else-if="inventory <= 10 && inventory > 0">Almost Out of Stock (conditional)</p>
-            <p v-else>Out of Stock (conditional)</p>
-
-            <p v-if="onSale">On Sale</p>
-            <p v-show="onSale">On Sale</p>
+            <p v-if="inStock">In Stock</p>
+            <p v-else>Out of Stock</p>
           </div>
         </div>
       </div>
