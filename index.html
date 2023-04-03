@@ -21,6 +21,22 @@
             <h1>{{ product }}</h1>
             <p v-if="inStock">In Stock</p>
             <p v-else>Out of Stock</p>
+            <!-- render an unordered list using a array -->
+            <ul>
+              <!-- v-for directive refers to the details array (collection) in the app data -->
+              <!-- assigns each element in details array the name (alias) "detail" to render in html component -->
+              <li v-for="detail in details">{{ detail }}</li>
+            </ul>
+
+            <!-- render a div containing properties in an array of objects -->
+            <!-- when rendering using v-for, give each list item a unique key and render a key attribute using the v-bind directive -->
+            <div v-for="variant in variants" :key="variant.id">{{ variant.color }}</div>
+
+            <!-- render a key without an id property/render a key for an array -->
+            <ul>
+              <!-- use the array index of the element as key -->
+              <li v-for="(size, index) in sizes" :key="index">{{ size }}</li>
+            </ul>
           </div>
         </div>
       </div>
