@@ -13,37 +13,22 @@
       <div class="nav-bar"></div>
 
       <div class="cart">Cart({{ cart }})</div>
+
+      <!-- the product component is imported in the below script tag and included in our page here -->
+      <!-- right now the button is not linked to the cart, but will be in L10 -->
+      <!-- just like in React, specify which props will be passed to the component -->
+      <!-- here, we are passing the premium prop to the product component -->
+      <!-- we also use the shorthand for v-bind so that we can reactively receive the value of premium as it updates -->
+      <product-display :premium="premium"></product-display>
       
-      <div class="product-display">
-        <div class="product-container">
-          <div class="product-image">
-            <img v-bind:src="image">
-          </div>
-          <div class="product-info">
-            <h1>{{ title }}</h1>
-
-            <p v-if="inStock">In Stock</p>
-            <p v-else>Out of Stock</p>
-            <ul>
-              <li v-for="detail in details">{{ detail }}</li>
-            </ul>
-
-            <div 
-              v-for="(variant, index) in variants" 
-              :key="variant.id" 
-              @mouseover="updateVariant(index)" 
-              class="color-circle" 
-              :style="{ backgroundColor: variant.color }">
-            </div>
-            
-            <button class="button" :class="{ disabledButton: !inStock }" :disabled="!inStock" v-on:click="addToCart">Add to Cart</button>
-          </div>
-        </div>
-      </div>
     </div>
 
     <!-- Import App -->
     <script src="./main.js"></script>
+
+    <!-- Import All Components, even if imported in child components -->
+    <script src="./components/ProductDisplay.js"></script>
+    <script src="./components/ProductDetails.js"></script>
 
     <!-- Mount App -->
     <script>
