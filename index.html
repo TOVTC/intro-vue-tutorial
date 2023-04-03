@@ -10,10 +10,23 @@
   </head>
   <body>
     <div id="app">
-      <h1>Product goes here</h1>
+      <!-- product variable refers to product property in data option of app-->
+      <!-- curly brace or "moustache" syntax allows JavaScript Expressions (runs valid JS in HTML) -->
+      <!-- can allow ternary, concatenation, methods, etc, not just plugging in variables -->
+      <h1>{{ product }}</h1>
+      <!-- Vue is reactive (has reactivity system), so when variables change in app.data(), the DOM updates to reflect changes -->
+      <!-- can test this using DevTools, updating mountedApp.product -->
+      <p>{{ description }}</p>
     </div>
 
-    <!-- Import Js -->
+    <!-- Import App -->
     <script src="./main.js"></script>
+    <!-- Mount App -->
+    <script>
+      // app refers to the app instance in our main.js file
+      // mounts the app to our DOM after it is imported
+      // argument in .mount() is a DOM selector used to plug the app into a piece of the DOM (in this case, line 12)
+      const mountedApp = app.mount("#app")
+    </script>
   </body>
 </html>
