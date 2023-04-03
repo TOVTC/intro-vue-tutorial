@@ -20,34 +20,24 @@
             <img v-bind:src="image">
           </div>
           <div class="product-info">
-            <!-- you can manually combine properties -->
-            <h1>{{ brand + ' ' + product + ' (inline)' }}</h1>
-            <!--  but you can also have your app compute the values for you -->
-            <!-- here, "title" refers to a computed property in our JS methods -->
-            <!-- computed properties are more performant because they cache values until they need to be updated when one of their dependencies change (i.e. brand or product name) -->
             <h1>{{ title }}</h1>
+
             <p v-if="inStock">In Stock</p>
             <p v-else>Out of Stock</p>
             <ul>
               <li v-for="detail in details">{{ detail }}</li>
             </ul>
 
-            <!-- the updateVariant method takes the index of the variant in the array in the v-for as a parameter -->
-            <!-- this allows the app to conditionally render the inStock or !inStock styling for each sock -->
-            <!-- you can access the index by passing it as an additional parameter when declaring the v-for -->
-            <!-- here, both image and inStock are computed properties -->
             <div 
-              class="color-circle" 
               v-for="(variant, index) in variants" 
               :key="variant.id" 
               @mouseover="updateVariant(index)" 
-              :style="{ backgroundColor: variant.color }"></div>
-
-
-              <p>{{ onSale }}</p>
-
-            <button class="button" :class="{ disabledButton: !inStock }" :disabled="!inStock" v-on:click="addToCart">Add to Cart</button>
+              class="color-circle" 
+              :style="{ backgroundColor: variant.color }">
             </div>
+            
+            <button class="button" :class="{ disabledButton: !inStock }" :disabled="!inStock" v-on:click="addToCart">Add to Cart</button>
+          </div>
         </div>
       </div>
     </div>
