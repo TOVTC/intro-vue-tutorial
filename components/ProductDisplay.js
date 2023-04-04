@@ -19,7 +19,6 @@ app.component('product-display', {
         <p v-else>Out of Stock</p>
 
         <p>Shipping: {{ shipping }}</p>
-
         <ul>
           <li v-for="detail in details">{{ detail }}</li>
         </ul>
@@ -39,13 +38,7 @@ app.component('product-display', {
           v-on:click="addToCart">
           Add to Cart
         </button>
-        <button 
-        class="button" 
-        :class="{ disabledButton: !inStock }" 
-        :disabled="!inStock" 
-        v-on:click="removeFromCart">
-        Remove from Cart
-        </button>
+
       </div>
     </div>
   </div>`,
@@ -63,16 +56,10 @@ app.component('product-display', {
   },
   methods: {
       addToCart() {
-        // emitting events passes events back up to parent components (bubbling up of events/opposite of prop drilling)
-        // need to add event listener to the component in parent component
-        // the first argument is the event being emitted upward, the second argument is any parameter you want to pass (payload)
           this.$emit('add-to-cart', this.variants[this.selectedVariant].id)
       },
       updateVariant(index) {
           this.selectedVariant = index
-      },
-      removeFromCart() {
-        this.$emit('remove-from-cart', this.variants[this.selectedVariant].id)
       }
   },
   computed: {
@@ -90,9 +77,6 @@ app.component('product-display', {
           return 'Free'
         }
         return 2.99
-      },
-      inCart() {
-        return this.cart.includes(this.variants[this.selectedVariant].id)
       }
   }
 })

@@ -8,9 +8,7 @@ const app = Vue.createApp({
     methods: {
         updateCart(id) {
             this.cart.push(id)
-        },
-        deleteItem(id) {
-            this.cart = this.cart.filter(item => item !== id)
         }
     }
-})
+  })
+  

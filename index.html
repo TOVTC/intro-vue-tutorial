@@ -12,13 +12,8 @@
     <div id="app">
       <div class="nav-bar"></div>
 
-      <!-- using cart.length prevents the actual array of id's in the cart from being displayed to the page -->
       <div class="cart">Cart({{ cart.length }})</div>
-
-      <!-- add event listener to the product display component so emitted events can be passed up -->
-      <!-- use the shorthand for event listener -->
-      <!-- updateCart is a method that belongs to main.js -->
-      <product-display :premium="premium" @add-to-cart="updateCart" @remove-from-cart="deleteItem"></product-display>
+      <product-display :premium="premium" @add-to-cart="updateCart"></product-display>
     </div>
 
     <!-- Import App -->
